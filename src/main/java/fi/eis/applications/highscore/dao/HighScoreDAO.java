@@ -7,6 +7,6 @@ import fi.eis.applications.highscore.vo.HighScoreEntryVO;
 
 @Repository
 public interface HighScoreDAO
-    extends PagingAndSortingRepository<HighScoreEntryVO, String> {
+    extends PagingAndSortingRepository<HighScoreEntryVO, Long> {
 
 }
