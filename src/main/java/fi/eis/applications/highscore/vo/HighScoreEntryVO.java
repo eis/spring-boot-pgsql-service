@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import fi.eis.applications.highscore.util.DateISO8601Serializer;
+import fi.eis.applications.highscore.json.DateISO8601Serializer;
 import lombok.Data;
 
 @Data

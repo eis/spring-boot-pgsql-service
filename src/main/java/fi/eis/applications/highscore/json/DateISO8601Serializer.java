@@ -1,4 +1,4 @@
-package fi.eis.applications.highscore.util;
+package fi.eis.applications.highscore.json;
 
 import java.io.IOException;
 import java.text.DateFormat;
