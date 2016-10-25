@@ -14,13 +14,13 @@ Infra setup (Ubuntu host)
 Build & run the app
 -------------------
 
-Note: If you want to use VM, begin with vagrant ssh && cd /vagrant
+Note: If you want to use VM, begin with `vagrant ssh` && `cd /vagrant`
 
-`mvn clean package`
-`java -jar target/*.jar`
+1. `mvn clean package`
+2. `java -jar target/*.jar`
 
 Run in port 80
 --------------
 
-`./enable-port80-ubuntu.sh`
-`./run-port80.sh`
+1. `./enable-port80-ubuntu.sh`
+2. `./run-port80.sh`
