@@ -1,8 +1,7 @@
 spring-boot-pgsql-service
 =========================
 
-[![Build Status](https://api.travis-ci.org/eis/spring-boot-pgsql-service.svg?branch=master)]
-(https://travis-ci.org/eis/spring-boot-pgsql-service)
+<a title="Build Status" href="https://travis-ci.org/eis/spring-boot-pgsql-service"><img src="https://api.travis-ci.org/eis/spring-boot-pgsql-service.svg?branch=master" /></a>
 
 Infra setup (VM)
 ----------------
