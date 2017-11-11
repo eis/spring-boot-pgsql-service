@@ -20,18 +20,29 @@ Infra setup (Ubuntu host)
 Build & run the app in port 8080
 --------------------------------
 
-Note: If you want to use VM, begin with `vagrant ssh` && `cd /vagrant`
 
-1. `mvn clean package`
-2. `java -jar target/*.jar`
+```bash
+# Build
+mvn clean package
 
-Or just `mvn spring-boot:run`.
+# Run
+./run-app.sh
+
+# Run in VM:
+vagrant ssh
+/vagrant/run-app.sh
+
+# Stop in VM: 
+vagrant ssh -c "pkill java"
+```
 
 Run in port 80
 --------------
 
-1. `./enable-port80-ubuntu.sh`
-2. `./run-port80.sh`
+```bash
+./enable-port80-ubuntu.sh
+./run-port80.sh
+```
 
 Usage
 -----
@@ -42,6 +53,3 @@ curl -X PUT localhost:8080/highscore  -H "Content-Type: application/json" --data
 # get highscores
 curl localhost:8080/highscore
 ```
-Note that by default database is cleared on every start.
-This can be controlled in properties, just comment out
-`spring.jpa.hibernate.ddl-auto=create` or set it to `none`.
