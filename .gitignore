@@ -1,6 +1,16 @@
+# maven
 target
+
+# eclipse
 .settings
 .classpath
 .project
+
+# intellij idea
+.idea
+*.iml
+
+# vagrant
 .vagrant
+
 *.log
