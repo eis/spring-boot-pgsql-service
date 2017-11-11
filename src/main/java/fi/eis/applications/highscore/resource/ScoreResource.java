@@ -3,6 +3,8 @@ package fi.eis.applications.highscore.resource;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -30,6 +32,7 @@ public class ScoreResource {
     @RequestMapping(value = "/highscore",
             method = RequestMethod.GET)
     @ResponseBody
+    @Cacheable("scores")
     public Iterable<HighScoreEntryVO> getScores() {
         return scoreDao.findAll(sortLimitCriteria);
     }
@@ -38,14 +41,17 @@ public class ScoreResource {
             method = RequestMethod.PUT,
             consumes = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
+    @CacheEvict(cacheNames="scores", allEntries=true)
     public HighScoreEntryVO createEntry(
             @RequestBody @Valid HighScoreEntryVO entry) {
         log.info("We're saving " + entry);
         return scoreDao.save(entry);
     }
+
     @RequestMapping(value = "/highscore/clear",
             method = RequestMethod.POST)
     @ResponseBody
+    @CacheEvict(cacheNames="scores", allEntries=true)
     public Iterable<HighScoreEntryVO> clear() {
         scoreDao.deleteAll();
         return scoreDao.findAll();
