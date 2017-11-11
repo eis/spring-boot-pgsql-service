@@ -27,6 +27,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.cpus = 2
   end
 
-  config.vm.provision :shell, :inline => $fixlocale, :privileged => true
   config.vm.provision :shell, :path => "ubuntu-deps.sh", :privileged => true
+  config.vm.provision :shell, :inline => $fixlocale, :privileged => true
 end
