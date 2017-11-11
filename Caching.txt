@@ -45,3 +45,52 @@ Running 30s test @ http://localhost:8080/highscore
   Socket errors: connect 157, read 652, write 0, timeout 0
 Requests/sec:   4950.49
 Transfer/sec:      2.22MB
+
+# Using Hezner minimal server, slsh.iki.fi, located in Germany
+
+# Uncached
+
+$ ./wrk -t12 -c400 -d30s http://slsh.iki.fi:8080/highscore
+Running 30s test @ http://slsh.iki.fi:8080/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.38s   345.65ms   2.00s    65.65%
+    Req/Sec    17.65     17.79   190.00     87.48%
+  4317 requests in 30.10s, 1.97MB read
+  Socket errors: connect 156, read 0, write 0, timeout 661
+Requests/sec:    143.43
+Transfer/sec:     67.01KB
+$ ./wrk -t12 -c400 -d30s http://slsh.iki.fi:8080/highscore
+Running 30s test @ http://slsh.iki.fi:8080/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   942.58ms  303.70ms   1.96s    68.45%
+    Req/Sec    23.61     19.51   128.00     75.33%
+  6815 requests in 30.07s, 3.06MB read
+  Socket errors: connect 156, read 0, write 0, timeout 16
+Requests/sec:    226.67
+Transfer/sec:    104.14KB
+
+# Cached
+
+$ ./wrk -t12 -c400 -d30s http://slsh.iki.fi:8080/highscore
+Running 30s test @ http://slsh.iki.fi:8080/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   631.63ms  291.53ms   2.00s    69.73%
+    Req/Sec    30.79     22.87   160.00     82.84%
+  10015 requests in 30.10s, 4.49MB read
+  Socket errors: connect 156, read 0, write 0, timeout 80
+Requests/sec:    332.77
+Transfer/sec:    152.84KB
+$ ./wrk -t12 -c400 -d30s http://slsh.iki.fi:8080/highscore
+Running 30s test @ http://slsh.iki.fi:8080/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   464.17ms  233.42ms   1.97s    69.52%
+    Req/Sec    39.38     27.94   200.00     70.58%
+  13269 requests in 30.09s, 5.95MB read
+  Socket errors: connect 156, read 0, write 0, timeout 0
+Requests/sec:    440.96
+Transfer/sec:    202.63KB
+
