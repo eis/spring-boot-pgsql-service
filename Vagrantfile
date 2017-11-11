@@ -1,6 +1,13 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+vbox_version=`vboxmanage --version`
+vb = vbox_version.split('.').map{|s|s.to_i}
+vb_min = [5,1,0]
+if ((vb <=> vb_min) < 0)
+	abort('virtualbox needs to be at least of version 5.1.0 for this box')
+end
+
 $fixlocale = <<SCRIPT
 echo "LC_CTYPE=\"en_US.UTF-8\"" | sudo tee -a /etc/default/locale > /dev/null
 SCRIPT
