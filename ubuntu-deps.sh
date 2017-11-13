@@ -6,3 +6,4 @@ if [ -f "/vagrant/create.sql" ]; then
 else
   sudo -u postgres psql -U postgres -d postgres -f ./create.sql
 fi
+apt-get install -y tomcat8 tomcat8-admin tomcat8-docs

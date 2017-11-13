@@ -29,4 +29,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision :shell, :path => "ubuntu-deps.sh", :privileged => true
   config.vm.provision :shell, :inline => $fixlocale, :privileged => true
+  config.vm.provision :shell, :path => "add-tomcat-admin.sh", :privileged => true
+  config.vm.provision :shell, :inline => 'systemctl restart tomcat8', :privileged => true
 end

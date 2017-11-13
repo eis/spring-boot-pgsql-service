@@ -25,15 +25,14 @@ Build & run the app in port 8080
 # Build
 mvn clean package
 
-# Run
-./run-app.sh
+# Deploy to Tomcat:
+mvn -s settings-vm.xml tomcat7:deploy-only
 
-# Run in VM:
-vagrant ssh
-/vagrant/run-app.sh
+# Note that making it Tomcat root app still requires
+# manual steps
 
 # Stop in VM: 
-vagrant ssh -c "pkill java"
+vagrant ssh -c "sudo systemctl stop tomcat8"
 ```
 
 Run in port 80

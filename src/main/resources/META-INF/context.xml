@@ -1,0 +1,1 @@
+<ResourceLink global="jdbc/postgres" name="jdbc/postgres" type="javax.sql.DataSource"/>
