@@ -6,22 +6,22 @@ $ ./wrk -t12 -c400 -d30s http://localhost:8080/highscore
 Running 30s test @ http://localhost:8080/highscore
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   269.41ms  176.62ms   1.82s    77.16%
-    Req/Sec    66.07     38.44   290.00     72.04%
-  23421 requests in 30.10s, 10.50MB read
-  Socket errors: connect 157, read 610, write 0, timeout 1
-Requests/sec:    778.20
-Transfer/sec:    357.36KB
+    Latency   538.87ms  152.00ms   1.53s    84.74%
+    Req/Sec    32.33     20.23   121.00     67.96%
+  11041 requests in 30.09s, 4.83MB read
+  Socket errors: connect 157, read 693, write 0, timeout 0
+Requests/sec:    366.96
+Transfer/sec:    164.29KB
 $ ./wrk -t12 -c400 -d30s http://localhost:8080/highscore
 Running 30s test @ http://localhost:8080/highscore
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   155.79ms  106.41ms   1.07s    72.50%
-    Req/Sec   111.23     52.59   343.00     70.85%
-  39370 requests in 30.08s, 17.62MB read
-  Socket errors: connect 157, read 623, write 0, timeout 0
-Requests/sec:   1308.74
-Transfer/sec:    599.85KB
+    Latency   433.40ms  146.22ms   1.25s    80.52%
+    Req/Sec    39.30     23.27   151.00     74.50%
+  13894 requests in 30.10s, 6.07MB read
+  Socket errors: connect 157, read 612, write 0, timeout 0
+Requests/sec:    461.59
+Transfer/sec:    206.48KB
 
 # With caching
 
@@ -29,68 +29,20 @@ $ ./wrk -t12 -c400 -d30s http://localhost:8080/highscore
 Running 30s test @ http://localhost:8080/highscore
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    93.25ms  112.61ms   1.19s    86.32%
-    Req/Sec   199.91    123.93     0.92k    70.00%
-  70489 requests in 30.10s, 31.62MB read
-  Socket errors: connect 157, read 733, write 0, timeout 0
-Requests/sec:   2341.97
-Transfer/sec:      1.05MB
-$ ./wrk -t12 -c400 -d30s http://localhost:8080/highscore
+    Latency   218.05ms   50.52ms 348.62ms   75.75%
+    Req/Sec    80.04     38.55   230.00     62.37%
+  28668 requests in 30.09s, 12.55MB read
+  Socket errors: connect 157, read 611, write 0, timeout 0
+Requests/sec:    952.81
+Transfer/sec:    427.26KB
+Jarkkos-MacBook-Pro-3:wrk jarkkorantavuori1$ ./wrk -t12 -c400 -d30s http://localhost:8080/highscore
 Running 30s test @ http://localhost:8080/highscore
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    54.88ms   80.83ms 948.46ms   89.23%
-    Req/Sec   419.16    213.82     1.51k    64.20%
-  148863 requests in 30.07s, 66.64MB read
-  Socket errors: connect 157, read 652, write 0, timeout 0
-Requests/sec:   4950.49
-Transfer/sec:      2.22MB
-
-# Using Hezner minimal server, slsh.iki.fi, located in Germany
-
-# Uncached
-
-$ ./wrk -t12 -c400 -d30s http://slsh.iki.fi:8080/highscore
-Running 30s test @ http://slsh.iki.fi:8080/highscore
-  12 threads and 400 connections
-  Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     1.38s   345.65ms   2.00s    65.65%
-    Req/Sec    17.65     17.79   190.00     87.48%
-  4317 requests in 30.10s, 1.97MB read
-  Socket errors: connect 156, read 0, write 0, timeout 661
-Requests/sec:    143.43
-Transfer/sec:     67.01KB
-$ ./wrk -t12 -c400 -d30s http://slsh.iki.fi:8080/highscore
-Running 30s test @ http://slsh.iki.fi:8080/highscore
-  12 threads and 400 connections
-  Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   942.58ms  303.70ms   1.96s    68.45%
-    Req/Sec    23.61     19.51   128.00     75.33%
-  6815 requests in 30.07s, 3.06MB read
-  Socket errors: connect 156, read 0, write 0, timeout 16
-Requests/sec:    226.67
-Transfer/sec:    104.14KB
-
-# Cached
-
-$ ./wrk -t12 -c400 -d30s http://slsh.iki.fi:8080/highscore
-Running 30s test @ http://slsh.iki.fi:8080/highscore
-  12 threads and 400 connections
-  Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   631.63ms  291.53ms   2.00s    69.73%
-    Req/Sec    30.79     22.87   160.00     82.84%
-  10015 requests in 30.10s, 4.49MB read
-  Socket errors: connect 156, read 0, write 0, timeout 80
-Requests/sec:    332.77
-Transfer/sec:    152.84KB
-$ ./wrk -t12 -c400 -d30s http://slsh.iki.fi:8080/highscore
-Running 30s test @ http://slsh.iki.fi:8080/highscore
-  12 threads and 400 connections
-  Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   464.17ms  233.42ms   1.97s    69.52%
-    Req/Sec    39.38     27.94   200.00     70.58%
-  13269 requests in 30.09s, 5.95MB read
-  Socket errors: connect 156, read 0, write 0, timeout 0
-Requests/sec:    440.96
-Transfer/sec:    202.63KB
+    Latency   156.07ms   49.17ms 281.65ms   74.59%
+    Req/Sec   109.84     57.81   360.00     67.47%
+  39275 requests in 30.09s, 17.20MB read
+  Socket errors: connect 157, read 644, write 0, timeout 0
+Requests/sec:   1305.06
+Transfer/sec:    585.23KB
 
