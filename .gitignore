@@ -13,4 +13,8 @@ target
 # vagrant
 .vagrant
 
+# OSX
+.DS_Store
+
+# misc
 *.log
