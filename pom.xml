@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fi.eis.applications</groupId>
-    <artifactId>boot-pgsql-service</artifactId>
+    <artifactId>boot-pgsql-cached-service</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <parent>
