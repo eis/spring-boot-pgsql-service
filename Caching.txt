@@ -186,3 +186,83 @@ Running 30s test @ http://localhost:55250/highscore
   952333 requests in 30.12s, 427.94MB read
 Requests/sec:  31621.89
 Transfer/sec:     14.21MB
+
+# Kapsi info
+
+$ free            
+             total       used       free     shared    buffers     cached
+Mem:     148600412  142326504    6273908    7439956     140312   87241572
+-/+ buffers/cache:   54944620   93655792
+Swap:     40501240          0   40501240
+
+cat /proc/meminfo
+MemTotal:       148600412 kB
+MemFree:         5140772 kB
+MemAvailable:   91234080 kB
+Buffers:          140608 kB
+Cached:         88709536 kB
+SwapCached:            0 kB
+Active:         80693124 kB
+Inactive:       53281664 kB
+Active(anon):   49644524 kB
+Inactive(anon):  2929212 kB
+Active(file):   31048600 kB
+Inactive(file): 50352452 kB
+Unevictable:           8 kB
+Mlocked:               8 kB
+SwapTotal:      40501240 kB
+SwapFree:       40501240 kB
+Dirty:             11528 kB
+Writeback:             0 kB
+AnonPages:      45125684 kB
+Mapped:           395088 kB
+Shmem:           7447808 kB
+Slab:            6801800 kB
+SReclaimable:    4875064 kB
+SUnreclaim:      1926736 kB
+KernelStack:      233104 kB
+PageTables:      1176740 kB
+NFS_Unstable:      13640 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    114801444 kB
+Committed_AS:   89827952 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:      949060 kB
+VmallocChunk:   34281561004 kB
+HardwareCorrupted:     0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:       10428 kB
+DirectMap2M:     3125248 kB
+DirectMap1G:    147849216 kB
+
+
+$ cat /proc/cpuinfo | grep "model name"
+5:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+31:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+57:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+83:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+109:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+135:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+161:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+187:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+213:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+239:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+265:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+291:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+317:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+343:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+369:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+395:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+421:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+447:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+473:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+499:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+525:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+551:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+577:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
+603:model name	: Intel(R) Xeon(R) CPU           X5675  @ 3.07GHz
