@@ -35,12 +35,23 @@ mvn -s settings-vm.xml tomcat7:deploy-only
 vagrant ssh -c "sudo systemctl stop tomcat8"
 ```
 
-Run in port 80
---------------
+Run Tomcat in port 80
+---------------------
 
 ```bash
 ./enable-port80-ubuntu.sh
 ./run-port80.sh
+```
+
+Deploy to root context
+----------------------
+```bash
+sudo systemctl stop tomcat8
+cd /var/lib/tomcat8/webapps
+sudo rm -rf ROOT
+sudo rm -rf ROOT.war
+sudo cp /vagrant/target/*.war ./ROOT.war
+sudo systemctl start tomcat8
 ```
 
 Usage
