@@ -94,3 +94,95 @@ Running 30s test @ http://slsh.iki.fi:8080/highscore
 Requests/sec:    440.96
 Transfer/sec:    202.63KB
 
+# Using kapsi across network, located in Finland
+
+# Uncached
+
+$ ./wrk -t12 -c400 -d30s http://box.kapsi.fi:55250/highscore
+Running 30s test @ http://box.kapsi.fi:55250/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   145.83ms  228.94ms   1.96s    88.59%
+    Req/Sec   180.59     72.28   530.00     71.72%
+  64520 requests in 30.10s, 29.04MB read
+  Socket errors: connect 157, read 128, write 0, timeout 82
+Requests/sec:   2143.31
+Transfer/sec:      0.96MB
+$ ./wrk -t12 -c400 -d30s http://box.kapsi.fi:55250/highscore
+Running 30s test @ http://box.kapsi.fi:55250/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   148.57ms  246.59ms   1.99s    88.46%
+    Req/Sec   185.91     82.89   594.00     68.35%
+  66475 requests in 30.10s, 29.93MB read
+  Socket errors: connect 157, read 0, write 0, timeout 94
+Requests/sec:   2208.55
+Transfer/sec:      0.99MB
+
+# Cached
+
+$ ./wrk -t12 -c400 -d30s http://box.kapsi.fi:55250/highscore
+Running 30s test @ http://box.kapsi.fi:55250/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   148.43ms  250.25ms   1.91s    88.04%
+    Req/Sec   183.79     80.27   560.00     70.03%
+  65550 requests in 30.10s, 29.51MB read
+  Socket errors: connect 157, read 108, write 0, timeout 104
+Requests/sec:   2177.84
+Transfer/sec:      0.98MB
+
+$ ./wrk -t12 -c400 -d30s http://box.kapsi.fi:55250/highscore
+Running 30s test @ http://box.kapsi.fi:55250/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   141.27ms  232.33ms   2.00s    88.36%
+    Req/Sec   182.54     73.71   780.00     72.34%
+  65166 requests in 30.10s, 29.33MB read
+  Socket errors: connect 157, read 124, write 0, timeout 154
+Requests/sec:   2165.00
+Transfer/sec:      0.97MB
+
+# Using kapsi from local wrk
+
+# Uncached
+
+slsh@lakka:~/repos/wrk$ ./wrk -t12 -c400 -d30s http://localhost:55250/highscore
+Running 30s test @ http://localhost:55250/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    55.36ms   46.63ms 712.86ms   97.59%
+    Req/Sec   654.09    106.06     1.67k    81.04%
+  231355 requests in 30.11s, 103.96MB read
+Requests/sec:   7684.40
+Transfer/sec:      3.45MB
+slsh@lakka:~/repos/wrk$ ./wrk -t12 -c400 -d30s http://localhost:55250/highscore
+Running 30s test @ http://localhost:55250/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    47.66ms   15.21ms 371.25ms   92.11%
+    Req/Sec   697.63     87.08     1.18k    81.64%
+  250334 requests in 30.10s, 112.49MB read
+Requests/sec:   8315.61
+Transfer/sec:      3.74MB
+
+# Cached
+
+$ ./wrk -t12 -c400 -d30s http://localhost:55250/highscore
+Running 30s test @ http://localhost:55250/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.61ms   12.26ms 220.00ms   87.80%
+    Req/Sec     2.62k   509.64     5.93k    76.08%
+  939409 requests in 30.11s, 422.13MB read
+Requests/sec:  31195.04
+Transfer/sec:     14.02MB
+$ ./wrk -t12 -c400 -d30s http://localhost:55250/highscore
+Running 30s test @ http://localhost:55250/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.51ms   10.94ms 252.14ms   82.07%
+    Req/Sec     2.66k   442.04     5.65k    74.79%
+  952333 requests in 30.12s, 427.94MB read
+Requests/sec:  31621.89
+Transfer/sec:     14.21MB
