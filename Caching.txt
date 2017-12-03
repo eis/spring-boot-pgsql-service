@@ -1,5 +1,33 @@
 # Measured using https://github.com/wg/wrk
 
+# Without caching, no debug logs
+
+$ ./wrk -t12 -c400 -d30s http://localhost:8080/highscore
+Running 30s test @ http://localhost:8080/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   197.95ms  206.84ms   1.89s    87.06%
+    Req/Sec    91.19     48.89   320.00     65.11%
+  32454 requests in 30.11s, 14.18MB read
+  Socket errors: connect 157, read 619, write 0, timeout 0
+Requests/sec:   1078.00
+Transfer/sec:    482.32KB
+$ ./wrk -t12 -c400 -d30s http://localhost:8080/highscore
+Running 30s test @ http://localhost:8080/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   185.68ms  197.46ms   1.95s    86.69%
+    Req/Sec   100.98     52.90   383.00     69.58%
+  35812 requests in 30.10s, 15.65MB read
+  Socket errors: connect 157, read 597, write 0, timeout 0
+Requests/sec:   1189.85
+Transfer/sec:    532.41KB
+
+# With caching
+
+??
+
+## Debug logs turned on
 # Without caching
 
 $ ./wrk -t12 -c400 -d30s http://localhost:8080/highscore
