@@ -46,12 +46,13 @@ Run Tomcat in port 80
 Deploy to root context
 ----------------------
 ```bash
-sudo systemctl stop tomcat8
+sudo su -
+systemctl stop tomcat8
 cd /var/lib/tomcat8/webapps
-sudo rm -rf ROOT
-sudo rm -rf ROOT.war
-sudo cp /vagrant/target/*.war ./ROOT.war
-sudo systemctl start tomcat8
+rm -rf ROOT
+rm -rf ROOT.war
+cp /vagrant/target/*.war ./ROOT.war && chown tomcat8:tomcat8 *.war
+systemctl start tomcat8
 ```
 
 Usage
