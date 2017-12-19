@@ -1,0 +1,8 @@
+https://aws.amazon.com/ec2/pricing/reserved-instances/pricing/
+https://aws.amazon.com/rds/postgresql/pricing/
+
+t2.small + t2.db.micro
+on-demand:
+$0.0268 + $0.025/h=36.5$/kk=438$/v
+reserved instance, yearly, upfront:
+$0.018 + $0.01484/h=24$/kk=288$/v

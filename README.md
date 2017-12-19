@@ -3,19 +3,17 @@ spring-boot-pgsql-service
 
 <a title="Build Status" href="https://travis-ci.org/eis/spring-boot-pgsql-service"><img src="https://api.travis-ci.org/eis/spring-boot-pgsql-service.svg?branch=master" /></a>
 
+Amazon version.
+
 Infra setup (VM)
 ----------------
 
-```bash
-vagrant up
-```
+https://eu-central-1.console.aws.amazon.com/elasticbeanstalk/home?region=eu-central-1#/getting_started
 
-Infra setup (Ubuntu host)
--------------------------
+-> create new application -> Web -> Tomcat, Load balanced, Java8
 
-```bash
-./ubuntu-deps.sh
-```
+http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/java-rds.html
+
 
 Build & run the app in port 8080
 --------------------------------
@@ -24,43 +22,14 @@ Build & run the app in port 8080
 ```bash
 # Build
 mvn clean package
-
-# Deploy to Tomcat:
-mvn -s settings-vm.xml tomcat7:deploy-only
-
-# Note that making it Tomcat root app still requires
-# manual steps
-
-# Stop in VM: 
-vagrant ssh -c "sudo systemctl stop tomcat8"
-```
-
-Run Tomcat in port 80
----------------------
-
-```bash
-./enable-port80-ubuntu.sh
-./run-port80.sh
-```
-
-Deploy to root context
-----------------------
-```bash
-sudo su -
-systemctl stop tomcat8
-cd /var/lib/tomcat8/webapps
-rm -rf ROOT
-rm -rf ROOT.war
-cp /vagrant/target/*.war ./ROOT.war && chown tomcat8:tomcat8 *.war
-systemctl start tomcat8
 ```
 
 Usage
 -----
 ```bash
 # send an entry
-curl -X PUT localhost:8080/highscore  -H "Content-Type: application/json" --data "{\"author\":\"me\", \"score\":\"999\",\"date\":\"2017-11-11T13:47:29Z\"}"
+curl -X PUT hostname/highscore -H "Content-Type: application/json" --data "{\"author\":\"me\", \"score\":\"999\",\"date\":\"2017-11-11T13:47:29Z\"}"
 
 # get highscores
-curl localhost:8080/highscore
+curl hostname/highscore
 ```

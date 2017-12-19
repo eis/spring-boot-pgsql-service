@@ -1,76 +1,456 @@
 # Measured using https://github.com/wg/wrk
 
+# Amazon Elastic Beanstalk, t2.medium+db.t2.medium
 # Without caching, no debug logs
 
-$ ./wrk -t12 -c400 -d30s http://localhost:8080/highscore
-Running 30s test @ http://localhost:8080/highscore
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   197.95ms  206.84ms   1.89s    87.06%
-    Req/Sec    91.19     48.89   320.00     65.11%
-  32454 requests in 30.11s, 14.18MB read
-  Socket errors: connect 157, read 619, write 0, timeout 0
-Requests/sec:   1078.00
-Transfer/sec:    482.32KB
-$ ./wrk -t12 -c400 -d30s http://localhost:8080/highscore
-Running 30s test @ http://localhost:8080/highscore
+    Latency   437.90ms  158.02ms   1.58s    71.40%
+    Req/Sec    46.38     29.72   200.00     72.89%
+  16205 requests in 30.10s, 9.75MB read
+  Socket errors: connect 157, read 0, write 0, timeout 0
+Requests/sec:    538.33
+Transfer/sec:    331.64KB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   185.68ms  197.46ms   1.95s    86.69%
-    Req/Sec   100.98     52.90   383.00     69.58%
-  35812 requests in 30.10s, 15.65MB read
-  Socket errors: connect 157, read 597, write 0, timeout 0
-Requests/sec:   1189.85
-Transfer/sec:    532.41KB
+    Latency   126.43ms  184.34ms   1.85s    89.69%
+    Req/Sec   169.45    109.63   575.00     60.51%
+  59959 requests in 30.10s, 35.22MB read
+  Socket errors: connect 157, read 0, write 0, timeout 393
+Requests/sec:   1992.14
+Transfer/sec:      1.17MB
 
 # With caching
 
-??
-
-## Debug logs turned on
-# Without caching
-
-$ ./wrk -t12 -c400 -d30s http://localhost:8080/highscore
-Running 30s test @ http://localhost:8080/highscore
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   538.87ms  152.00ms   1.53s    84.74%
-    Req/Sec    32.33     20.23   121.00     67.96%
-  11041 requests in 30.09s, 4.83MB read
-  Socket errors: connect 157, read 693, write 0, timeout 0
-Requests/sec:    366.96
-Transfer/sec:    164.29KB
-$ ./wrk -t12 -c400 -d30s http://localhost:8080/highscore
-Running 30s test @ http://localhost:8080/highscore
+    Latency   147.81ms  139.11ms   1.98s    87.23%
+    Req/Sec   142.70     81.29   410.00     62.20%
+  50707 requests in 30.07s, 30.19MB read
+  Socket errors: connect 157, read 0, write 0, timeout 45
+Requests/sec:   1686.17
+Transfer/sec:      1.00MB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   433.40ms  146.22ms   1.25s    80.52%
-    Req/Sec    39.30     23.27   151.00     74.50%
-  13894 requests in 30.10s, 6.07MB read
-  Socket errors: connect 157, read 612, write 0, timeout 0
-Requests/sec:    461.59
-Transfer/sec:    206.48KB
+    Latency   124.70ms  182.56ms   1.95s    89.55%
+    Req/Sec   166.73     91.37   560.00     65.92%
+  59579 requests in 30.10s, 35.06MB read
+  Socket errors: connect 157, read 0, write 0, timeout 369
+Requests/sec:   1979.19
+Transfer/sec:      1.16MB
+
+# t2.medium+db.t2.micro
+
+# No caching
+
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   161.64ms  219.06ms   1.99s    90.02%
+    Req/Sec   143.31     91.16   393.00     57.16%
+  50206 requests in 30.09s, 34.45MB read
+  Socket errors: connect 157, read 0, write 0, timeout 220
+  Non-2xx or 3xx responses: 304
+Requests/sec:   1668.32
+Transfer/sec:      1.14MB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   138.23ms  198.85ms   1.98s    88.98%
+    Req/Sec   157.06     95.37   575.00     60.82%
+  56054 requests in 30.08s, 35.23MB read
+  Socket errors: connect 157, read 0, write 0, timeout 291
+  Non-2xx or 3xx responses: 142
+Requests/sec:   1863.40
+Transfer/sec:      1.17MB
 
 # With caching
 
-$ ./wrk -t12 -c400 -d30s http://localhost:8080/highscore
-Running 30s test @ http://localhost:8080/highscore
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   218.05ms   50.52ms 348.62ms   75.75%
-    Req/Sec    80.04     38.55   230.00     62.37%
-  28668 requests in 30.09s, 12.55MB read
-  Socket errors: connect 157, read 611, write 0, timeout 0
-Requests/sec:    952.81
-Transfer/sec:    427.26KB
-Jarkkos-MacBook-Pro-3:wrk jarkkorantavuori1$ ./wrk -t12 -c400 -d30s http://localhost:8080/highscore
-Running 30s test @ http://localhost:8080/highscore
+    Latency   148.48ms  212.90ms   1.98s    90.12%
+    Req/Sec   153.52     79.17   410.00     63.15%
+  54771 requests in 30.10s, 34.56MB read
+  Socket errors: connect 157, read 0, write 0, timeout 246
+  Non-2xx or 3xx responses: 117
+Requests/sec:   1819.70
+Transfer/sec:      1.15MB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   156.07ms   49.17ms 281.65ms   74.59%
-    Req/Sec   109.84     57.81   360.00     67.47%
-  39275 requests in 30.09s, 17.20MB read
-  Socket errors: connect 157, read 644, write 0, timeout 0
-Requests/sec:   1305.06
-Transfer/sec:    585.23KB
+    Latency   131.25ms  190.17ms   1.97s    88.66%
+    Req/Sec   167.20    105.34   600.00     63.78%
+  59609 requests in 30.10s, 35.06MB read
+  Socket errors: connect 157, read 0, write 0, timeout 293
+Requests/sec:   1980.60
+Transfer/sec:      1.17MB
+
+# t2.nano + t2.db.micro
+
+# No caching
+
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.62s   211.42ms   1.99s    74.13%
+    Req/Sec     6.96      9.12    60.00     84.50%
+  415 requests in 30.08s, 8.30MB read
+  Socket errors: connect 157, read 0, write 0, timeout 272
+  Non-2xx or 3xx responses: 415
+Requests/sec:     13.80
+Transfer/sec:    282.54KB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    81.28ms  120.63ms   1.35s    95.32%
+    Req/Sec   233.71    163.63   590.00     60.48%
+  24977 requests in 30.10s, 12.42MB read
+  Socket errors: connect 157, read 0, write 0, timeout 284
+  Non-2xx or 3xx responses: 24977
+Requests/sec:    829.77
+Transfer/sec:    422.58KB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     0.00us    0.00us   0.00us     nan%
+    Req/Sec     0.00      0.00     0.00       nan%
+  0 requests in 30.08s, 0.00B read
+  Socket errors: connect 157, read 0, write 0, timeout 0
+Requests/sec:      0.00
+Transfer/sec:       0.00B
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   545.71ms  244.74ms   1.36s    67.56%
+    Req/Sec    34.43     35.53   210.00     83.33%
+  1543 requests in 30.09s, 0.93MB read
+  Socket errors: connect 157, read 0, write 0, timeout 239
+Requests/sec:     51.28
+Transfer/sec:     31.53KB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   144.09ms  257.70ms   1.84s    94.55%
+    Req/Sec   136.35    144.79   580.00     82.55%
+  15812 requests in 30.10s, 11.49MB read
+  Socket errors: connect 157, read 0, write 0, timeout 208
+  Non-2xx or 3xx responses: 13793
+Requests/sec:    525.31
+Transfer/sec:    390.87KB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   448.88ms  439.23ms   1.92s    82.16%
+    Req/Sec    51.64     49.23   220.00     74.44%
+  5716 requests in 30.08s, 3.40MB read
+  Socket errors: connect 157, read 0, write 0, timeout 734
+  Non-2xx or 3xx responses: 10
+Requests/sec:    190.02
+Transfer/sec:    115.59KB
+# -- test 2
+
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   283.35ms  384.46ms   2.00s    88.18%
+    Req/Sec    43.65     31.54   181.00     66.17%
+  13327 requests in 30.10s, 34.52MB read
+  Socket errors: connect 157, read 0, write 0, timeout 860
+  Non-2xx or 3xx responses: 1620
+Requests/sec:    442.77
+Transfer/sec:      1.15MB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   142.92ms  145.43ms   1.06s    79.33%
+    Req/Sec   137.91    160.82   606.00     82.80%
+  6661 requests in 30.10s, 4.30MB read
+  Socket errors: connect 157, read 0, write 0, timeout 242
+  Non-2xx or 3xx responses: 5039
+Requests/sec:    221.33
+Transfer/sec:    146.28KB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    84.06ms  130.88ms   1.82s    93.83%
+    Req/Sec   213.14    144.95   590.00     65.79%
+  19558 requests in 30.09s, 9.72MB read
+  Socket errors: connect 157, read 0, write 0, timeout 49
+  Non-2xx or 3xx responses: 19558
+Requests/sec:    649.91
+
+# With caching
+
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   150.13ms  233.92ms   2.00s    90.77%
+    Req/Sec   149.94     83.71   414.00     64.55%
+  53145 requests in 30.10s, 33.91MB read
+  Socket errors: connect 157, read 0, write 0, timeout 398
+  Non-2xx or 3xx responses: 137
+Requests/sec:   1765.74
+Transfer/sec:      1.13MB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   118.94ms  177.04ms   1.98s    86.31%
+    Req/Sec   171.67    100.33   590.00     64.44%
+  60178 requests in 30.09s, 35.33MB read
+  Socket errors: connect 157, read 0, write 0, timeout 458
+Requests/sec:   2000.14
+Transfer/sec:      1.17MB
+
+# t2.micro + t2.db.micro
+
+# no caching
+
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   217.75ms  295.26ms   2.00s    87.28%
+    Req/Sec    85.01     52.11   366.00     67.96%
+  29635 requests in 30.10s, 34.55MB read
+  Socket errors: connect 157, read 0, write 0, timeout 544
+  Non-2xx or 3xx responses: 1056
+Requests/sec:    984.47
+Transfer/sec:      1.15MB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   178.11ms  252.97ms   1.99s    87.72%
+    Req/Sec   118.40     77.99   393.00     64.21%
+  42118 requests in 30.09s, 35.85MB read
+  Socket errors: connect 157, read 0, write 0, timeout 356
+  Non-2xx or 3xx responses: 693
+Requests/sec:   1399.90
+Transfer/sec:      1.19MB
+
+# caching
+
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   200.36ms   91.11ms   1.70s    77.56%
+    Req/Sec   101.03     60.05   326.00     63.82%
+  35719 requests in 30.10s, 21.33MB read
+  Socket errors: connect 157, read 0, write 0, timeout 0
+Requests/sec:   1186.67
+Transfer/sec:    725.79KB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   133.37ms  139.36ms   1.96s    88.96%
+    Req/Sec   156.63     88.07   393.00     60.43%
+  55462 requests in 30.10s, 32.76MB read
+  Socket errors: connect 157, read 0, write 0, timeout 149
+Requests/sec:   1842.85
+Transfer/sec:      1.09MB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   132.99ms   81.96ms   1.33s    92.16%
+    Req/Sec   152.16     79.71   353.00     58.64%
+  54486 requests in 30.10s, 32.16MB read
+  Socket errors: connect 157, read 0, write 0, timeout 27
+Requests/sec:   1810.45
+Transfer/sec:      1.07MB
+
+# t2.small + t2.db.micro
+
+# no caching
+
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   910.89ms  382.07ms   2.00s    67.54%
+    Req/Sec    25.84     22.42   160.00     78.83%
+  7218 requests in 30.10s, 30.07MB read
+  Socket errors: connect 157, read 0, write 0, timeout 271
+  Non-2xx or 3xx responses: 1607
+Requests/sec:    239.77
+Transfer/sec:      1.00MB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   350.83ms  349.57ms   2.00s    87.49%
+    Req/Sec    55.26     37.01   210.00     74.05%
+  18961 requests in 30.10s, 35.29MB read
+  Socket errors: connect 157, read 0, write 0, timeout 319
+  Non-2xx or 3xx responses: 1492
+Requests/sec:    629.96
+Transfer/sec:      1.17MB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   276.80ms  308.11ms   2.00s    88.35%
+    Req/Sec    73.10     49.97   290.00     65.41%
+  25080 requests in 30.09s, 35.50MB read
+  Socket errors: connect 157, read 0, write 0, timeout 314
+  Non-2xx or 3xx responses: 1288
+Requests/sec:    833.47
+Transfer/sec:      1.18MB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   210.98ms  279.40ms   2.00s    88.87%
+    Req/Sec    97.48     65.98   333.00     65.59%
+  34033 requests in 30.10s, 34.12MB read
+  Socket errors: connect 157, read 0, write 0, timeout 369
+  Non-2xx or 3xx responses: 848
+Requests/sec:   1130.66
+Transfer/sec:      1.13MB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   158.16ms  222.70ms   2.00s    90.61%
+    Req/Sec   143.00     94.92   396.00     59.56%
+  50015 requests in 30.07s, 35.36MB read
+  Socket errors: connect 157, read 0, write 0, timeout 318
+  Non-2xx or 3xx responses: 377
+Requests/sec:   1663.09
+Transfer/sec:      1.18MB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   151.52ms  216.26ms   1.99s    90.53%
+    Req/Sec   146.62     87.47   404.00     64.35%
+  52131 requests in 30.10s, 35.37MB read
+  Socket errors: connect 157, read 0, write 0, timeout 319
+  Non-2xx or 3xx responses: 300
+Requests/sec:   1732.14
+Transfer/sec:      1.18MB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   152.26ms  215.99ms   2.00s    90.71%
+    Req/Sec   151.68     93.69   450.00     62.28%
+  52179 requests in 30.09s, 35.39MB read
+  Socket errors: connect 157, read 0, write 0, timeout 323
+  Non-2xx or 3xx responses: 300
+Requests/sec:   1734.02
+Transfer/sec:      1.18MB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   145.53ms  202.11ms   1.94s    90.13%
+    Req/Sec   151.05     74.18   393.00     64.97%
+  54009 requests in 30.10s, 35.47MB read
+  Socket errors: connect 157, read 0, write 0, timeout 281
+  Non-2xx or 3xx responses: 237
+Requests/sec:   1794.20
+Transfer/sec:      1.18MB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   147.92ms  207.81ms   1.98s    90.05%
+    Req/Sec   150.31     80.37   430.00     63.97%
+  53651 requests in 30.10s, 35.43MB read
+  Socket errors: connect 157, read 0, write 0, timeout 318
+  Non-2xx or 3xx responses: 248
+Requests/sec:   1782.40
+Transfer/sec:      1.18MB
+
+# cached
+
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   443.18ms  195.13ms   1.99s    76.66%
+    Req/Sec    48.72     36.07   291.00     68.99%
+  16109 requests in 30.09s, 9.61MB read
+  Socket errors: connect 157, read 0, write 0, timeout 17
+Requests/sec:    535.27
+Transfer/sec:    327.12KB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   232.36ms  106.32ms   1.96s    85.08%
+    Req/Sec    87.69     54.29   320.00     66.99%
+  30907 requests in 30.10s, 18.23MB read
+  Socket errors: connect 157, read 0, write 0, timeout 8
+Requests/sec:   1026.86
+Transfer/sec:    620.13KB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   133.57ms   38.11ms   1.12s    84.93%
+    Req/Sec   149.85     80.17   404.00     60.97%
+  53603 requests in 30.10s, 31.59MB read
+  Socket errors: connect 157, read 0, write 0, timeout 0
+Requests/sec:   1780.85
+Transfer/sec:      1.05MB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   132.06ms  112.59ms   1.98s    91.61%
+    Req/Sec   155.50     80.37   431.00     65.09%
+  55620 requests in 30.10s, 32.79MB read
+  Socket errors: connect 157, read 0, write 0, timeout 61
+  Non-2xx or 3xx responses: 3
+Requests/sec:   1847.89
+Transfer/sec:      1.09MB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   133.68ms  153.02ms   1.97s    86.80%
+    Req/Sec   160.14     80.13   411.00     61.14%
+  57196 requests in 30.10s, 33.71MB read
+  Socket errors: connect 157, read 0, write 0, timeout 141
+  Non-2xx or 3xx responses: 1
+Requests/sec:   1900.44
+Transfer/sec:      1.12MB
+$ ./wrk -t12 -c400 -d30s http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+Running 30s test @ http://pgsqltomcatservice-env.eu-central-1.elasticbeanstalk.com/highscore
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   133.25ms  156.13ms   1.97s    87.07%
+    Req/Sec   158.42     91.01   440.00     60.42%
+  56512 requests in 30.08s, 33.28MB read
+  Socket errors: connect 157, read 0, write 0, timeout 184
+Requests/sec:   1878.67
+Transfer/sec:      1.11MB
 
