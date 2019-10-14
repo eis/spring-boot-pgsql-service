@@ -20,7 +20,6 @@ Infra setup (Ubuntu host)
 Build & run the app in port 8080
 --------------------------------
 
-
 ```bash
 # Build
 mvn clean package
