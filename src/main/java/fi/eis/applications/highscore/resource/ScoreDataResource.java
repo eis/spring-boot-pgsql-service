@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @Slf4j
 @RequestMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-public class ScoreResource {
+public class ScoreDataResource {
     @Autowired
     private HighScoreDAO scoreDao;
 

@@ -1,0 +1,29 @@
+{{>partials/header}}
+<div id="container" style="margin: 2em;">
+    <table id="scores" class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>rank</th>
+            <th>score</th>
+            <th>author</th>
+            <th>date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#entries}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{score}}</td>
+                <td>{{author}}</td>
+                <td>{{date}}</td>
+            </tr>
+        {{/entries}}
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#scores').DataTable();
+} );
+</script>
+{{>partials/footer}}

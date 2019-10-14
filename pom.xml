@@ -42,6 +42,12 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
+        <!-- HTML UI -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mustache</artifactId>
+        </dependency>
+
         <!-- begin test stuff -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
