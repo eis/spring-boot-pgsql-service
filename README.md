@@ -52,4 +52,7 @@ curl -X PUT localhost:8080/highscore  -H "Content-Type: application/json" --data
 
 # get highscores
 curl localhost:8080/highscore
+
+# with browser
+http://localhost:8080
 ```
