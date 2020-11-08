@@ -20,7 +20,7 @@ public class ScoreUIResource {
     private HighScoreDAO scoreDao;
 
     private static final Pageable sortLimitCriteria =
-            new PageRequest(0, 20, Sort.Direction.DESC, "score");
+            PageRequest.of(0, 20, Sort.by("score").descending());
 
     @GetMapping("/")
     public ModelAndView showIndexPage(Map<String,Object> model) {

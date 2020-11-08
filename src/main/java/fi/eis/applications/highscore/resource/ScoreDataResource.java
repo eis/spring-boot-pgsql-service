@@ -25,7 +25,7 @@ public class ScoreDataResource {
     private HighScoreDAO scoreDao;
 
     private static final Pageable sortLimitCriteria =
-            new PageRequest(0, 20, Sort.Direction.DESC, "score");
+            PageRequest.of(0, 20, Sort.by("score").descending());
 
     @RequestMapping(value = "/highscore",
             method = RequestMethod.GET)
