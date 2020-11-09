@@ -4,6 +4,7 @@ dist: xenial
 
 jdk:
   - openjdk8
+  - openjdk11
 
 script: travis_wait mvn verify --quiet --batch-mode -DbuildNumber=${TRAVIS_BUILD_NUMBER}
 
